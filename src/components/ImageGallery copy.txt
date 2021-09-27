@@ -1,0 +1,40 @@
+import React from "react";
+import Carousel, { Modal, ModalGateway } from "react-images";
+
+
+class Component extends React.Component {
+  state = { modalIsOpen: false };
+  toggleModal = () => {
+    this.setState((state) => ({ modalIsOpen: !state.modalIsOpen }));
+  };
+  render() {
+    const { modalIsOpen } = this.state;
+
+    return (
+      <ModalGateway>
+        {modalIsOpen ? (
+          <Modal onClose={this.toggleModal}>
+            <Carousel views={images} />
+          </Modal>
+        ) : null}
+      </ModalGateway>
+    );
+  }
+}
+
+// function ImageGallery() {
+//   return (
+//     <Lightbox
+//       images={[
+//         { src: "http://example.com/img1.jpg" },
+//         { src: "http://example.com/img2.jpg" },
+//       ]}
+//       isOpen={this.state.lightboxIsOpen}
+//       onClickPrev={this.gotoPrevious}
+//       onClickNext={this.gotoNext}
+//       onClose={this.closeLightbox}
+//     />
+//   );
+// }
+
+// export default ImageGallery;
